@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="fetchData.js"></script>
+</head>
+<body>
+    <div class="tabs">
+        <button onclick="showTab('timesheets')">Timesheets</button>
+        <button onclick="showTab('employees')">Employees</button>
+        <button onclick="showTab('addEmployee')">Add Employee</button>
+    </div>
+
+    <div id="timesheetsTab" class="tab">
+        <!-- Timesheets data will be displayed here -->
+    </div>
+
+    <div id="employeesTab" class="tab">
+        <!-- Employees data will be displayed here -->
+    </div>
+
+    <div id="addEmployeeTab" class="tab">
+        <!-- Add Employee form will be displayed here -->
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab').forEach(tab => tab.style.display = 'none');
+            // Show the selected tab
+            document.getElementById(tabName + 'Tab').style.display = 'block';
+        }
+
+        // Fetch data for initial display
+        fetchData('getTimesheets.php', displayTimesheets);
+        fetchData('getEmployees.php', displayEmployees);
+    </script>
+</body>
+</html>
